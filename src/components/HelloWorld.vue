@@ -1,39 +1,58 @@
 <template>
-  <div class="row">
-    <div class="col-3">
-      <h3>Draggable 1</h3>
-      <draggable class="dragArea list-group" :list="list1" :group="{ name: 'people', pull: 'clone', put: false }"
-        :clone="cloneDog" @change="log">
-        <template #item="{ element }" :key="element.id">
-          <div class="list-group-item">{{ element.name }} {{ index }}</div>
-        </template>
-      </draggable>
+  <div>
+
+    <ItemVal />
+    <div style="height:60px;background: rgb(235, 160, 160);"></div>
+    <!-- <FunctionVal /> -->
+
+    <div class="row">
+      <div class="col-6">
+        <h3>Draggable 1</h3>
+        <draggable class="dragArea list-group" :list="list1" :group="{ name: 'people', pull: 'clone', put: false }"
+          :clone="cloneDog" @change="log">
+          <template #item="{ element }" :key="element.id">
+            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+          </template>
+        </draggable>
+      </div>
+
+      <div class="col-6">
+        <h3>Draggable 2</h3>
+        <draggable class="dragArea list-group" :list="list2" group="people" @change="log">
+          <template #item="{ element }" :key="element.id">
+            <div class="list-group-item">{{ element.name }} {{ index }}</div>
+          </template>
+        </draggable>
+      </div>
+
     </div>
+    <div class="row">
+      <div class="col-3">
+        <h3>Draggable 1</h3>
+        <RawDisplay class="col-3" :value="list1" title="List 1" />
+      </div>
 
-    <div class="col-3">
-      <h3>Draggable 2</h3>
-      <draggable class="dragArea list-group" :list="list2" group="people" @change="log">
-        <template #item="{ element }" :key="element.id">
-          <div class="list-group-item">{{ element.name }} {{ index }}</div>
-        </template>
-       </draggable>
+      <div class="col-3">
+        <h3>Draggable 2</h3>
+        <RawDisplay class="col-3" :value="list2" title="List 2" />
+      </div>
     </div>
-
-    <RawDisplay class="col-3" :value="list1" title="List 1" />
-
-    <RawDisplay class="col-3" :value="list2" title="List 2" />
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable/src/vuedraggable';
 import RawDisplay from './RawDisplay.vue'
+import FunctionVal from './FunctionVal.vue'
+import ItemVal from './ItemVal.vue'
 let idGlobal = 8;
 export default {
   name: "custom-clone",
   components: {
     draggable,
     RawDisplay,
+    FunctionVal,
+    ItemVal,
   },
   data() {
     return {
@@ -49,7 +68,7 @@ export default {
         { name: "cat 7", id: 7 }
       ],
       temList: [
-         {
+        {
           title: "序号",
           dataIndex: "number",
           customRender: ({ title, record, index }) => this.metas.perPage * (this.metas.currentPage - 1) + index + 1,
@@ -74,6 +93,10 @@ export default {
 };
 </script>
 <style scoped>
+/* .row{
+    width:100vw;
+    height: 100vh;
+  } */
 .flip-list-move {
   transition: transform 0.5s;
 }

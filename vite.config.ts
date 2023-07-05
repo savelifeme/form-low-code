@@ -1,30 +1,41 @@
+/*
+ * @Author: wjw
+ * @Date: 2023-06-27 10:34:05
+ * @LastEditTime: 2023-06-29 23:08:36
+ * @LastEditors: wjw
+ * @Description: 
+ */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import esbuild from "rollup-plugin-esbuild";
-import sourcemaps from 'rollup-plugin-sourcemaps';
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    {
-      ...esbuild({
-        target: "chrome64",
-        sourceMap:false,
-        loaders: {
-          ".vue": "js",
-          ".ts": "js",
-          ".tsx": "js",
-        },
-        jsxFactory: "h",
-        jsxFragment: "Fragment",
-        tsconfig: "tsconfig.json",
-        minify: true,
-      }),
-      // enforce: 'post'
-    },
-    // sourcemaps()
+    // {
+    //   ...esbuild({
+    //     target: "chrome64",
+    //     sourceMap:false,
+    //     loaders: {
+    //       ".vue": "js",
+    //       ".ts": "js",
+    //       ".tsx": "js",
+    //     },
+    //     jsxFactory: "h",
+    //     jsxFragment: "Fragment",
+    //     tsconfig: "tsconfig.json",
+    //     minify: true,
+    //   }),
+    //   // enforce: 'post'
+    // },
   ],
+  resolve: { // 配置别名
+    alias: {
+      "@": "/src" // @表示src目录
+    }
+  },
   build: {
     sourcemap: false,
     outDir: "dist2",
@@ -47,7 +58,7 @@ export default defineConfig({
     },
   },
   esbuild: {
-    sourcemap: 'both',
+    sourcemap: false,
     sourcesContent: false,
   },
   server: {
