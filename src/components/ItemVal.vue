@@ -1,148 +1,81 @@
+<!--
+ * @Author: wjw
+ * @Date: 2023-07-05 09:53:30
+ * @LastEditTime: 2023-07-06 18:41:20
+ * @LastEditors: wjw
+ * @Description: 
+-->
 <template>
   <div class="row gx-5">
-    <div style='margin-bottom:20px'>
-      <a-row
-        type="flex"
-        align="middle"
-        style="padding:10px;background:rgb(147, 220, 190)"
-      >
-        <a-col :span="3">
-          <h3>Draggable</h3>
-        </a-col>
-        <a-col :span="9">
-          <a-button
-            type="primary"
-            @click="viewHtml"
-          >
-            预览
-          </a-button>
-        </a-col>
-      </a-row>
-    </div>
-    <div class="col-3">
-      <div class="itt">
+
+    <div style='height:300px'>
+      <div style='margin-bottom:20px'>
+        <a-row type="flex" align="middle" style="padding:10px;background:rgb(147, 220, 190)">
+          <a-col :span="3">
+            <h3 id="dd">Draggable</h3>
+          </a-col>
+          <a-col :span="9">
+            <div id="svgDemo" style="width:800px"></div>
+            <a-button type="primary" @click="viewHtml">
+              预览
+            </a-button>
+          </a-col>
+        </a-row>
+      </div>
+      <div class="col-3">
+        <div class="itt">
+          <div class="group">
+            <draggable :list="modules.groupLeft" ghost-class="ghost" handle=".move" filter=".forbid"
+              :force-fallback="true" chosen-class="chosenClass" animation="300" @start="onStart" @end="onEnd"
+              :fallback-class="true" :fallback-on-body="true" :touch-start-threshold="50" :fallback-tolerance="50"
+              :move="onMove" class="groupLeft" :group="{ name: 'people', pull: 'clone', put: false }" :clone="cloneDog"
+              @change="log">
+              <template #item="{ element }">
+                <div :class="element.disabledMove ? 'forbid item' : 'item'">
+                  <label class="move">{{ element.title }}</label>
+                  <p v-html="element.title == '业务管控' ? '业务管控不允许拖拽和停靠' : `内容：${element.title}`"></p>
+                  <a-image :src="element.logo_path" width="88px" height="88px"></a-image>
+                </div>
+              </template>
+            </draggable>
+          </div>
+        </div>
+      </div>
+      <div class="col-7 content">
         <div class="group">
-          <draggable
-            :list="modules.groupLeft"
-            ghost-class="ghost"
-            handle=".move"
-            filter=".forbid"
-            :force-fallback="true"
-            chosen-class="chosenClass"
-            animation="300"
-            @start="onStart"
-            @end="onEnd"
-            :fallback-class="true"
-            :fallback-on-body="true"
-            :touch-start-threshold="50"
-            :fallback-tolerance="50"
-            :move="onMove"
-            class="groupLeft"
-            :group="{ name: 'people', pull: 'clone', put: false }"
-            :clone="cloneDog"
-            @change="log"
-          >
+          <draggable :list="modules.groupContent1" ghost-class="ghost" handle=".move" filter=".forbid"
+            :force-fallback="true" chosen-class="chosenClass" animation="300" @start="onStart" @end="onEnd"
+            :fallback-class="true" :fallback-on-body="true" :touch-start-threshold="50" :fallback-tolerance="50"
+            :move="onMove" group="people" @change="log" item-key="id" style="display:flex;">
             <template #item="{ element }">
               <div :class="element.disabledMove ? 'forbid item' : 'item'">
                 <label class="move">{{ element.title }}</label>
                 <p v-html="element.title == '业务管控' ? '业务管控不允许拖拽和停靠' : `内容：${element.title}`"></p>
-                <a-image
-                  :src="element.logo_path"
-                  width="88px"
-                  height="88px"
-                ></a-image>
+                <a-image :src="element.logo_path" width="88px" height="88px"></a-image>
               </div>
             </template>
           </draggable>
         </div>
+        <div class="group">
+          <draggable :list="modules.groupContent2" ghost-class="ghost" handle=".move" filter=".forbid"
+            :force-fallback="true" chosen-class="chosenClass" animation="300" @start="onStart" @end="onEnd"
+            :fallback-class="true" :fallback-on-body="true" :touch-start-threshold="50" :fallback-tolerance="50"
+            :move="onMove" group="people" @change="log" item-key="id" style="display:flex;">
+            <template #item="{ element }">
+              <div :class="element.disabledMove ? 'forbid item' : 'item'">
+                <label class="move">{{ element.title }}</label>
+                <p v-html="element.title == '业务管控11' ? '业务管控不允许拖拽和停靠' : `内容：${element.title}`"></p>
+                <a-image :src="element.logo_path" width="88px" height="88px"></a-image>
+              </div>
+            </template>
+          </draggable>
+        </div>
+      </div>
+      <ViewHtml ref="viewRef" :list="[...modules.groupContent1, ...modules.groupContent2]" />
 
-      </div>
+      <RawDisplay class="col-2" :value="modules.groupContent1" title="modules.groupContent1" />
+      <RawDisplay class="col-2" :value="modules.groupContent2" title="modules.groupContent2" />
     </div>
-    <div class="col-7 content">
-      <div class="group">
-        <draggable
-          :list="modules.groupContent1"
-          ghost-class="ghost"
-          handle=".move"
-          filter=".forbid"
-          :force-fallback="true"
-          chosen-class="chosenClass"
-          animation="300"
-          @start="onStart"
-          @end="onEnd"
-          :fallback-class="true"
-          :fallback-on-body="true"
-          :touch-start-threshold="50"
-          :fallback-tolerance="50"
-          :move="onMove"
-          group="people"
-          @change="log"
-          item-key="id"
-          style="display:flex;"
-        >
-          <template #item="{ element }">
-            <div :class="element.disabledMove ? 'forbid item' : 'item'">
-              <label class="move">{{ element.title }}</label>
-              <p v-html="element.title == '业务管控' ? '业务管控不允许拖拽和停靠' : `内容：${element.title}`"></p>
-              <a-image
-                :src="element.logo_path"
-                width="88px"
-                height="88px"
-              ></a-image>
-            </div>
-          </template>
-        </draggable>
-      </div>
-      <div class="group">
-        <draggable
-          :list="modules.groupContent2"
-          ghost-class="ghost"
-          handle=".move"
-          filter=".forbid"
-          :force-fallback="true"
-          chosen-class="chosenClass"
-          animation="300"
-          @start="onStart"
-          @end="onEnd"
-          :fallback-class="true"
-          :fallback-on-body="true"
-          :touch-start-threshold="50"
-          :fallback-tolerance="50"
-          :move="onMove"
-          group="people"
-          @change="log"
-          item-key="id"
-          style="display:flex;"
-        >
-          <template #item="{ element }">
-            <div :class="element.disabledMove ? 'forbid item' : 'item'">
-              <label class="move">{{ element.title }}</label>
-              <p v-html="element.title == '业务管控11' ? '业务管控不允许拖拽和停靠' : `内容：${element.title}`"></p>
-              <a-image
-                :src="element.logo_path"
-                width="88px"
-                height="88px"
-              ></a-image>
-            </div>
-          </template>
-        </draggable>
-      </div>
-    </div>
-    <ViewHtml
-      ref="viewRef"
-      :list="modules.groupContent2"
-    />
-
-    <RawDisplay
-      class="col-2"
-      :value="modules.groupContent1"
-      title="modules.groupContent1"
-    />
-    <RawDisplay
-      class="col-2"
-      :value="modules.groupContent2"
-      title="modules.groupContent2"
-    />
   </div>
 </template>
 
@@ -150,6 +83,9 @@
 import draggable from 'vuedraggable/src/vuedraggable';
 import RawDisplay from './RawDisplay.vue'
 import ViewHtml from './ViewHtml.vue'
+import DraggableItem from './DraggableItem.vue'
+import { SVG } from '@svgdotjs/svg.js'
+import '@svgdotjs/svg.draggable.js'
 let idGlobal = 8;
 
 export default {
@@ -158,10 +94,12 @@ export default {
     draggable,
     RawDisplay,
     ViewHtml,
+    DraggableItem,
   },
   data() {
     return {
       enabled: true,
+      draw: null,
       modules: {
         groupLeft: [
           {
@@ -373,7 +311,55 @@ export default {
       this.$refs.viewRef.visible = true;
 
     }
-  }
+  },
+  mounted() {
+    this.draw = SVG().addTo("#svgDemo").size(800, 300);
+    let line = this.draw
+      .line(10, 10, 10, 150) // 起点xy，终点xy
+      .stroke({ width: 5, linecap: "round", color: "blue" })
+      .draggable(); // 线条样式
+    // 画矩形
+    let rect = this.draw
+      .rect(100, 100) // 宽高
+      .radius(10) // 圆角
+      .fill("red") //填充
+      .move(20, 20)
+      .draggable(); // 位移
+
+    // 画圆
+    let circle = this.draw
+      .circle(100) // 圆直径
+      .fill("green")
+      .move(130, 20)
+      .draggable();
+
+    // 画椭圆
+    let ellipse = this.draw
+      .ellipse(150, 100) // 宽直径，高直径
+      .move(240, 20)
+      .fill("pink")
+      .draggable();
+
+    // 折线
+    let polyline = this.draw
+      .polyline('450, 10, 400, 100, 500, 100') // 点的位置，也可以使用数组替换[[450,10],[400,100],[500,100]]
+      .fill("#f06")
+      .stroke({ width: 1, color: "black" })
+      .draggable();
+
+    // 多边形
+    let polygon = this.draw.polygon([[550, 10], [600, 10], [630, 50], [600, 100], [550, 100], [520, 50]]) // 点的位置
+      .fill("#71f5ea")
+      .stroke({ width: 1 })
+      .draggable();
+    // var draw = SVG().addTo('#dd').size(300, 300)
+    // var rect = draw.rect(100, 100).attr({ fill: '#f06' });
+    // rect.animate().move(200, 200)
+
+    // polygon.off("dragend").on("dragend", function (e) {
+    //   console.log(e)
+    // });
+  },
 };
 </script>
 <style scoped>
@@ -418,17 +404,17 @@ body {
   user-select: none;
 }
 
-.item > label {
+.item>label {
   border-bottom: solid 1px #ddd;
   padding: 6px 10px;
   color: #333;
 }
 
-.item > label:hover {
+.item>label:hover {
   cursor: move;
 }
 
-.item > p {
+.item>p {
   padding: 6px 10px;
   color: #666;
 }

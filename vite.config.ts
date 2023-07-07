@@ -7,6 +7,7 @@
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import esbuild from "rollup-plugin-esbuild";
 
 
@@ -14,6 +15,8 @@ import esbuild from "rollup-plugin-esbuild";
 export default defineConfig({
   plugins: [
     vue(),
+    // vueJsx(),
+    // vueJsx(),
     // {
     //   ...esbuild({
     //     target: "chrome64",
@@ -31,6 +34,9 @@ export default defineConfig({
     //   // enforce: 'post'
     // },
   ],
+  // optimizeDeps: {
+  //   include: ["@vue/babel-plugin-jsx"],
+  // },
   resolve: { // 配置别名
     alias: {
       "@": "/src" // @表示src目录

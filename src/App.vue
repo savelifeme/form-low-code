@@ -1,12 +1,13 @@
 <!--
  * @Author: wjw
  * @Date: 2023-06-27 10:34:05
- * @LastEditTime: 2023-07-04 23:30:53
+ * @LastEditTime: 2023-07-06 18:52:57
  * @LastEditors: wjw
  * @Description: 
 -->
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+// import DraggableItem from './components/DraggableItem.vue'
 // import Left from './components/Left.vue'
 import { onMounted } from 'vue'
 // import Layout from './page/Layout/index.vue'
@@ -29,6 +30,7 @@ onMounted(() => {
 
 <template>
   <div>
+    <!-- <DraggableItem /> -->
     <!-- <Layout /> -->
     <!-- <Left /> -->
     <!-- <a href="https://vitejs.dev" target="_blank">

@@ -1,11 +1,9 @@
 <template>
   <div>
-
     <ItemVal />
-    <div style="height:60px;background: rgb(235, 160, 160);"></div>
-    <!-- <FunctionVal /> -->
+    <!-- <div style="height:60px;background: rgb(235, 160, 160);"></div> -->
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-6">
         <h3>Draggable 1</h3>
         <draggable class="dragArea list-group" :list="list1" :group="{ name: 'people', pull: 'clone', put: false }"
@@ -36,14 +34,14 @@
         <h3>Draggable 2</h3>
         <RawDisplay class="col-3" :value="list2" title="List 2" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable/src/vuedraggable';
 import RawDisplay from './RawDisplay.vue'
-import FunctionVal from './FunctionVal.vue'
+// import FunctionVal from './FunctionVal.vue'
 import ItemVal from './ItemVal.vue'
 let idGlobal = 8;
 export default {
@@ -51,7 +49,7 @@ export default {
   components: {
     draggable,
     RawDisplay,
-    FunctionVal,
+    // FunctionVal,
     ItemVal,
   },
   data() {

@@ -56,6 +56,7 @@ import {
 } from "ant-design-vue";
 import 'ant-design-vue/dist/antd.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+// import drag from './components/package'
 
 
 const vm = createApp(App);
@@ -109,4 +110,5 @@ vm.use(DatePicker)
   .use(ConfigProvider)
   .use(Typography)
   .use(Badge);
+  // .use(drag);
 vm.mount('#app') // 全局注册

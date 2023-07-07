@@ -38,9 +38,9 @@
           <tr>
             <td
               colspan="2"
-              v-for="item in thead"
-              :key="item.name"
-            >{{item.name}}</td>
+              v-for="item in list"
+              :key="item.title"
+            >{{item.title}}</td>
           </tr>
         </table>
 
@@ -132,7 +132,7 @@ export default {
     console.log(this.list)
     return {
       enabled: true,
-      visible: true,
+      visible: false,
       thead: [
         {
           dataIndex: "name",
