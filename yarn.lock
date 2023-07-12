@@ -1589,6 +1589,11 @@
     "@vue/compiler-dom" "3.3.4"
     "@vue/shared" "3.3.4"
 
+"@vue/devtools-api@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz#98b99425edee70b4c992692628fa1ea2c1e57d07"
+  integrity sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==
+
 "@vue/language-core@1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-1.8.2.tgz#560c1df639394a5df0043f2d7989dc2fba5bf4ca"
@@ -2131,6 +2136,11 @@ core-js-compat@^3.31.0, core-js-compat@^3.8.3:
   integrity sha512-wIDWd2s5/5aJSdpOJHfSibxNODxoGoWOBHt8JSPB41NOE94M7kuTPZCYLOlTtuoXTsBPKobpJ6T+y0SSy5L9SA==
   dependencies:
     browserslist "^4.21.9"
+
+core-js@^2.6.11:
+  version "2.6.12"
+  resolved "https://registry.npmmirror.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.15.1:
   version "3.31.0"
@@ -3534,6 +3544,13 @@ vite@^4.3.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-draggable-resizable-gorkys@^2.4.8:
+  version "2.4.8"
+  resolved "https://registry.npmmirror.com/vue-draggable-resizable-gorkys/-/vue-draggable-resizable-gorkys-2.4.8.tgz#c09b6376715b450b6a4d4e8fd229d1031a9ae832"
+  integrity sha512-DjhelFtRN1cy/AVpYbxlhmTTC5KwLvU490nUZzKp05kMddhzu5TBrBEeYo/9rhmdsrSkxjQguyRvF6IYumw9yw==
+  dependencies:
+    core-js "^2.6.11"
+
 vue-draggable-resizable@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-draggable-resizable/-/vue-draggable-resizable-2.3.0.tgz#94c433ca748bc1a4d0959ba1c5c0e1c3536cee5b"
@@ -3545,6 +3562,13 @@ vue-dragline@^1.0.4:
   integrity sha512-yrSxoWdORcj1zx/RGnkSji9WtMDKHVeZY761M7y3sm9jkTxHXs1W0ZdgXg1tK6rA5lZqNPOUQ11XmKbD2DxVhQ==
   dependencies:
     vue-draggable-resizable "^2.3.0"
+
+vue-router@4:
+  version "4.2.4"
+  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.2.4.tgz#382467a7e2923e6a85f015d081e1508052c191b9"
+  integrity sha512-9PISkmaCO02OzPVOMq2w82ilty6+xJmQrarYZDkjZBfl4RvYAlt4PKnEX21oW4KTtWfa9OuO/b3qk1Od3AEdCQ==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
 
 vue-template-compiler@^2.7.14:
   version "2.7.14"

@@ -6,7 +6,9 @@
  * @Description: 
 -->
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import VDRGorky from './components/VDRGorky.vue'
+import VLine from './components/VLine.vue'
 // import DraggableItem from './components/DraggableItem.vue'
 // import Left from './components/Left.vue'
 import { onMounted } from 'vue'
@@ -29,21 +31,49 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="bigRouter">
+    <div class="routerLine">
+      <div>
+        <a-button>
+          <router-link to="/">VLine</router-link>
+        </a-button>
+      </div>
+      <div>
+        <a-button>
+          <router-link to="/VDRGorky">VDRGorky</router-link>
+        </a-button>
+      </div>
+    </div>
+    <div class="routerView">
+      <router-view></router-view>
+    </div>
     <!-- <DraggableItem /> -->
     <!-- <Layout /> -->
     <!-- <Left /> -->
-    <!-- <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a> -->
   </div>
-  <HelloWorld />
+  <!-- <HelloWorld /> -->
+  <!-- <VDRGorky /> -->
+  <!-- <VLine /> -->
 </template>
 
 <style scoped>
+.bigRouter {
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.routerLine {
+  width: 260px;
+  border: 1px solid rgb(177, 116, 116);
+}
+
+.routerView {
+  width: calc(100% - 260px);
+  border: 1px solid rgb(176, 228, 161);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

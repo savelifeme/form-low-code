@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import Vue,{ createApp } from 'vue'
 import './style.css'
 import App from './App.vue';
 import {
@@ -54,10 +54,24 @@ import {
   Col,
   Badge,
 } from "ant-design-vue";
+import {createRouter,createWebHashHistory} from 'vue-router'
 import 'ant-design-vue/dist/antd.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import drag from './components/package'
 
+import VLine from '@/components/VLine.vue'
+import VDRGorky from '@/components/VDRGorky.vue'
+
+
+const routes = [
+  { path: '/', component: VLine },
+  { path: '/VDRGorky', component: VDRGorky },
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes, // `routes: routes` 的缩写
+
+}) 
 
 const vm = createApp(App);
 vm.use(DatePicker)
@@ -111,4 +125,5 @@ vm.use(DatePicker)
   .use(Typography)
   .use(Badge);
   // .use(drag);
+vm.use(router);
 vm.mount('#app') // 全局注册
