@@ -22,8 +22,6 @@
       :style="{ left: item.position, top: item.origin, height: item.lineLength }" />
     <span class="ref-line h-line" v-for="item in hLine" v-show="item.display"
       :style="{ top: item.position, left: item.origin, width: item.lineLength }" />
-    <span class="ref-line h-line" v-for="item in hLine" v-show="item.display"
-      :style="{ top: item.position, left: item.origin, width: item.lineLength }" />
     <!--辅助线END-->
     <!-- </div> -->
   </div>
